@@ -1,22 +1,24 @@
 <div class="container my-4">
-  <div class="card mb-4">
-    <div class="card-body">
-      <div class="form-group">
-        <textarea [(ngModel)]="activityContent" class="form-control" rows="3" placeholder="Broadcast your status"></textarea>
-        <button (click)="sendBroadcast()" class="btn btn-outline-primary btn-block mt-3">Send</button>
+  <div class="col-md-6 mx-auto">
+    <div class="card shadow-sm mb-4">
+      <div class="card-body">
+        <div class="form-group mb-0">
+          <textarea [(ngModel)]="activityContent" class="form-control" rows="3" placeholder="Broadcast your status..."></textarea>
+          <button (click)="sendBroadcast()" class="btn btn-outline-primary btn-block mt-3">Broadcast</button>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="card" *ngIf="activities.length > 0">
-    <ul class="list-group list-group-flush">
-      <li *ngFor="let activity of activities" class="list-group-item">
-        <h5>{{activity.nickname}}</h5>
-        <p>
-          {{activity.content}}
-        </p>
-        <small class="text-muted">{{activity.createdAt | date}}</small>
-      </li>
-    </ul>
+    <div class="card shadow-sm" *ngIf="activities.length > 0">
+      <ul class="list-group list-group-flush">
+        <li *ngFor="let activity of activities" class="list-group-item animated fadeIn">
+          <small class="text-muted float-right">{{activity.createdAt | date}}</small>
+          <h5>{{activity.nickname}}</h5>
+          <p class="mb-0">
+            {{activity.content}}
+          </p>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>
