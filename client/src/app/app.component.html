@@ -13,14 +13,14 @@
           <textarea [(ngModel)]="activityContent" class="form-control" rows="3" placeholder="Broadcast your status..."></textarea>
         </div>
 
-        <button (click)="sendBroadcast()" [disabled]="activityContent == null || activityContent.length == 0" class="btn btn-outline-primary btn-block">Broadcast</button>
+        <button (click)="sendBroadcast()" [disabled]="(activityContent == null || activityContent.length == 0) || (nickname.length == 0 || nickname == null)" class="btn btn-outline-primary btn-block">Broadcast</button>
       </div>
     </div>
 
     <div class="card shadow-sm" *ngIf="activities.length > 0">
       <ul class="list-group list-group-flush">
         <li *ngFor="let activity of activities.reverse()" class="list-group-item animated fadeIn">
-          <small class="text-muted float-right">{{activity.createdAt | date}}</small>
+          <small class="text-muted float-right">{{activity.createdAt | date: 'mediumTime'}}</small>
           <h5>{{activity.nickname}}</h5>
           <p class="mb-0">
             {{activity.content}}
@@ -30,3 +30,5 @@
     </div>
   </div>
 </div>
+
+<simple-notifications class="shadow"></simple-notifications>

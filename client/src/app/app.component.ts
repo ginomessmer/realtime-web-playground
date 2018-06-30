@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { SocketService } from './broadcast/common/services/socket.service';
 import { Activity } from './broadcast/common/data/activity';
 import { Event } from './broadcast/common/enums/event.enum';
+import { NotificationsService } from 'angular2-notifications';
+import { PushNotificationsService } from 'ng-push';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +20,9 @@ export class AppComponent implements OnInit {
 
   ioConnection: any;
 
-  constructor(private socketService: SocketService) {
+  constructor(private socketService: SocketService,
+    private notificationService: NotificationsService,
+    private pushNotificationService: PushNotificationsService) {
 
   }
 
@@ -31,6 +35,17 @@ export class AppComponent implements OnInit {
 
     this.ioConnection = this.socketService.onActivity()
       .subscribe((activity: Activity) => {
+        // this.notificationService.info(activity.nickname, activity.content);
+        this.pushNotificationService.create(activity.nickname, {
+          body: activity.content
+        }).subscribe(
+          res => console.log(res),
+          err => { 
+            console.log(err);
+            this.pushNotificationService.requestPermission();
+          }
+        );
+
         this.activities.push(activity);
       });
 
