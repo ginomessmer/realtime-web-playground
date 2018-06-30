@@ -20,6 +20,8 @@ export class AppComponent implements OnInit {
 
   ioConnection: any;
 
+  isServerAvailable: boolean = false;
+
   constructor(private socketService: SocketService,
     private notificationService: NotificationsService,
     private pushNotificationService: PushNotificationsService) {
@@ -51,10 +53,12 @@ export class AppComponent implements OnInit {
 
     this.socketService.onEvent(Event.CONNECT).subscribe(() => {
       console.log('Connected to socket server');
+      this.isServerAvailable = true;
     });
 
     this.socketService.onEvent(Event.DISCONNECT).subscribe(() => {
       console.log('Disconnected from socket server');
+      this.isServerAvailable = false;
     });
   }
 
