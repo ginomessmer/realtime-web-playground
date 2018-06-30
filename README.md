@@ -6,6 +6,13 @@
 
 This is just a sample repository to showcase realtime capabilities of socket.io and Angular 6. It’s heavily based on this [article](https://medium.com/dailyjs/real-time-apps-with-typescript-integrating-web-sockets-node-angular-e2b57cbd1ec1) on Medium with major changes.
 
+## Goals
+
+- Establish persistent web socket connection.
+- Send socket messages across all users.
+- Display messages for all users.
+- Show push notifications to user, whenever supported.
+
 ## Scopes
 
 - `/server` - run the server, handle and maintain connections.
