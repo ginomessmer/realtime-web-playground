@@ -9,7 +9,7 @@ This is just a sample repository to showcase realtime capabilities of socket.io 
 ## Goals
 
 - Establish persistent web socket connection.
-- Send socket messages across all users.
+- Send socket messages to all users.
 - Display messages for all users.
 - Show push notifications to user, whenever supported.
 
