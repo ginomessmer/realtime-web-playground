@@ -30,6 +30,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.initIoConnection();
+    this.pushNotificationService.requestPermission();
   }
 
   private initIoConnection() {
@@ -42,10 +43,7 @@ export class AppComponent implements OnInit {
           body: activity.content
         }).subscribe(
           res => console.log(res),
-          err => { 
-            console.log(err);
-            this.pushNotificationService.requestPermission();
-          }
+          err => { console.log(err); }
         );
 
         this.activities.push(activity);
