@@ -2,16 +2,24 @@
   <div class="col-md-6 mx-auto">
     <div class="card shadow-sm mb-4">
       <div class="card-body">
-        <div class="form-group mb-0">
-          <textarea [(ngModel)]="activityContent" class="form-control" rows="3" placeholder="Broadcast your status..."></textarea>
-          <button (click)="sendBroadcast()" class="btn btn-outline-primary btn-block mt-3">Broadcast</button>
+        <div class="form-group row">
+          <label class="col-auto col-form-label">Your name</label>
+          <div class="col">
+            <input [(ngModel)]="nickname" type="text" class="form-control" [disabled]="isNameLocked" placeholder="Your nickname">
+          </div>
         </div>
+
+        <div class="form-group">
+          <textarea [(ngModel)]="activityContent" class="form-control" rows="3" placeholder="Broadcast your status..."></textarea>
+        </div>
+
+        <button (click)="sendBroadcast()" [disabled]="activityContent == null || activityContent.length == 0" class="btn btn-outline-primary btn-block">Broadcast</button>
       </div>
     </div>
 
     <div class="card shadow-sm" *ngIf="activities.length > 0">
       <ul class="list-group list-group-flush">
-        <li *ngFor="let activity of activities" class="list-group-item animated fadeIn">
+        <li *ngFor="let activity of activities.reverse()" class="list-group-item animated fadeIn">
           <small class="text-muted float-right">{{activity.createdAt | date}}</small>
           <h5>{{activity.nickname}}</h5>
           <p class="mb-0">

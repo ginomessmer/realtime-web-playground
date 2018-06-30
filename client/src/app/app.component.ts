@@ -12,6 +12,10 @@ export class AppComponent implements OnInit {
 
   activityContent: string = null;
   activities: Activity[] = [];
+
+  nickname: string = null;
+  isNameLocked: boolean = false;
+
   ioConnection: any;
 
   constructor(private socketService: SocketService) {
@@ -45,11 +49,12 @@ export class AppComponent implements OnInit {
     }
 
     this.socketService.send({
-      nickname: '<set nickname here>',
+      nickname: this.nickname,
       content: this.activityContent,
       createdAt: Date.now().toString()
     });
 
     this.activityContent = null;
+    this.isNameLocked = true;
   }
 }
