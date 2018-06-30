@@ -1,3 +1,22 @@
 <div class="container">
-  it works
+  <div class="card">
+    <ul class="list-group list-group-flush">
+      <li *ngFor="let activity of activities" class="list-group-item">
+        <h5>{{activity.nickname}}</h5>
+        <p>
+          {{activity.content}}
+        </p>
+        <small class="text-muted">{{activity.createdAt | date}}</small>
+      </li>
+    </ul>
+  </div>
+
+  <div class="card mt-4">
+    <div class="card-body">
+      <div class="form-group">
+        <textarea [(ngModel)]="activityContent" class="form-control" rows="3"></textarea>
+        <button (click)="sendBroadcast()" class="btn btn-outline-primary btn-block mt-3">Send</button>
+      </div>
+    </div>
+  </div>
 </div>

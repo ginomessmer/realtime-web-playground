@@ -4,6 +4,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { BroadcastModule } from './broadcast/broadcast.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -11,6 +12,7 @@ import { BroadcastModule } from './broadcast/broadcast.module';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     NgbModule.forRoot(),
     BroadcastModule
   ],
