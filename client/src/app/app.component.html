@@ -13,7 +13,7 @@
           <textarea [(ngModel)]="activityContent" class="form-control" rows="3" placeholder="Broadcast your status..."></textarea>
         </div>
 
-        <button (click)="sendBroadcast()" [disabled]="(activityContent == null || activityContent.length == 0) || (nickname.length == 0 || nickname == null)" class="btn btn-outline-primary btn-block">Broadcast</button>
+        <button (click)="sendBroadcast()" [disabled]="(activityContent == null || activityContent.length == 0) || (nickname.length == 0 || nickname == null)" class="btn btn-primary btn-block">Broadcast away</button>
       </div>
     </div>
 
